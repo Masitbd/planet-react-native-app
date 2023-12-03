@@ -5,30 +5,41 @@ import {spacing} from './src/theme/spacing'
 import {useFonts} from 'expo-font'
 import { typography } from './src/theme/typograpy';
 import Text from './src/components/text/text';
+import { NavigationContainer, DarkTheme } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './src/screens/home';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   const [loaded] = useFonts({
     "Antonio-Medium": require("./assets/fonts/Antonio-Medium.ttf"),
-    "Spartan-Bold": require("./assets/fonts/Antonio-Medium.ttf"),
-    "Spartan-Regular": require("./assets/fonts/Antonio-Medium.ttf"),
+    "Spartan-Bold": require("./assets/fonts/Spartan-Bold.ttf"),
+    "Spartan-Regular": require("./assets/fonts/Spartan-Regular.ttf"),
   });
 
   if (!loaded) {
     return <Text>Font is loading</Text>;
   }
+
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text preset='small' style={{ fontFamily: typography.primary,marginTop:spacing[8]}}>Open up App.js to start working on your application</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+     <>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}} >
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style='light' />
+     </>
+  
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.black,
-    alignItems: 'center',
-    justifyContent: 'center',
+   // backgroundColor: colors.black,
+    
   },
 });
