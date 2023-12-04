@@ -4,10 +4,10 @@ import Text from './text/text'
 import { spacing } from '../theme/spacing'
 import { colors } from '../theme/colors'
 
-export default function PlanetHeader() {
+export default function PlanetHeader({title='The Planet App'}) {
   return (
     <View style={styles.container}>
-      <Text preset='h3'>The Planet</Text>
+      <Text preset='h3'>{title}</Text>
     </View>
   )
 }
