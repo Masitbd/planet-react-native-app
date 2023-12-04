@@ -7,18 +7,33 @@ import { StyleSheet, FlatList, View, Pressable } from 'react-native'
 import { PLANET_LIST } from '../data/planet-list'
 import { spacing } from '../theme/spacing'
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'
+
+
+
+const PlanetItem = ({item})=>{
+    const {name, color} = item
+    const navigation = useNavigation()
+    return(
+        <Pressable
+         onPress={()=>{navigation.navigate("Details", {planet: item});
+      
+    }}
+        
+        style={styles.item}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={[styles.circle,{backgroundColor: item.color}]} /> 
+        <Text style={styles.itemName}>{item.name}</Text>
+        </View>
+        <AntDesign name="right" size={20} color={colors.white} />
+     </Pressable>
+    )
+}
 
 export default function Home({navigation}) {
   const renderItem= ({item})=> {
-        return(
-         <Pressable onPress={()=>{navigation.navigate('Details')}} style={styles.item}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={[styles.circle,{backgroundColor: item.color}]} /> 
-            <Text style={styles.itemName}>{item.name}</Text>
-            </View>
-            <AntDesign name="right" size={20} color={colors.white} />
-         </Pressable>
-          
+     return(
+        <PlanetItem item= {item} />
         )
        }
   return (

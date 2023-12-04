@@ -8,14 +8,16 @@ import { colors } from '../theme/colors'
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
 
-export default function Details() {
-  const navigation = useNavigation();
+export default function Details({navigation,route}) {
+  const planet = route.params.planet
+  console.log('my planet',planet)
+  const myNavigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
        <>
        <PlanetHeader />
         <View style={styles.item}>
-        <Pressable onPress={()=>{navigation.goBack()}}>
+        <Pressable onPress={()=>{myNavigation.goBack()}}>
         <AntDesign style={{marginRight:5, marginLeft: 5}} name="left" size={20} color={colors.white} />
         </Pressable>
         <Text >Details</Text>
