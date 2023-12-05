@@ -1,23 +1,11 @@
-import * as React from "react"
-import Svg, { SvgProps, Circle, Mask, G, Path } from "react-native-svg"
+import * as React from "react";
+import Svg, { SvgProps, Circle, Mask, G, Path } from "react-native-svg";
 
 function SvgComponent(props: SvgProps) {
   return (
-    <Svg
-      width={300}
-      height={300}
-      viewBox="0 0 458 458"
-      fill="none"
-      {...props}
-    >
+    <Svg width={200} height={200} viewBox="0 0 458 458" fill="none" {...props}>
       <Circle cx={229} cy={229} r={229} fill="#65F0D5" />
-      <Mask
-        id="prefix__a"
-        x={0}
-        y={0}
-        width={458}
-        height={458}
-      >
+      <Mask id="prefix__a" x={0} y={0} width={458} height={458}>
         <Circle cx={229} cy={229} r={229} fill="#fff" />
       </Mask>
       <G mask="url(#prefix__a)">
@@ -28,13 +16,7 @@ function SvgComponent(props: SvgProps) {
           fill="#49CBC2"
         />
       </G>
-      <Mask
-        id="prefix__b"
-        x={0}
-        y={0}
-        width={458}
-        height={458}
-      >
+      <Mask id="prefix__b" x={0} y={0} width={458} height={458}>
         <Circle cx={229} cy={229} r={229} fill="#fff" />
       </Mask>
       <G mask="url(#prefix__b)">
@@ -45,13 +27,7 @@ function SvgComponent(props: SvgProps) {
           fill="#50DECD"
         />
       </G>
-      <Mask
-        id="prefix__c"
-        x={0}
-        y={0}
-        width={458}
-        height={458}
-      >
+      <Mask id="prefix__c" x={0} y={0} width={458} height={458}>
         <Circle cx={229} cy={229} r={229} fill="#fff" />
       </Mask>
       <G mask="url(#prefix__c)">
@@ -62,20 +38,14 @@ function SvgComponent(props: SvgProps) {
           fill="#77FFF5"
         />
       </G>
-      <Mask
-        id="prefix__d"
-        x={0}
-        y={0}
-        width={458}
-        height={458}
-      >
+      <Mask id="prefix__d" x={0} y={0} width={458} height={458}>
         <Circle cx={229} cy={229} r={229} fill="#fff" />
       </Mask>
       <G mask="url(#prefix__d)">
         <Path opacity={0.078} fill="#000" d="M229 0h229v458H229z" />
       </G>
     </Svg>
-  )
+  );
 }
 
-export default SvgComponent
+export default SvgComponent;

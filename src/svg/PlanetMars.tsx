@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import Svg, {
   SvgProps,
   Defs,
@@ -7,16 +7,11 @@ import Svg, {
   Mask,
   Use,
   Path,
-} from "react-native-svg"
+} from "react-native-svg";
 
 function SvgComponent(props: SvgProps) {
   return (
-    <Svg
-      width={300}
-      height={300}
-      viewBox="0 0 336 336"
-      {...props}
-    >
+    <Svg width={200} height={200} viewBox="0 0 336 336" {...props}>
       <Defs>
         <Circle id="prefix__a" cx={168} cy={168} r={168} />
         <Circle id="prefix__c" cx={168} cy={168} r={168} />
@@ -64,7 +59,7 @@ function SvgComponent(props: SvgProps) {
         />
       </G>
     </Svg>
-  )
+  );
 }
 
-export default SvgComponent
+export default SvgComponent;
