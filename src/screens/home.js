@@ -1,9 +1,9 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React from 'react'
+import React, { useState } from 'react'
 import Text from '../components/text/text'
 import PlanetHeader from '../components/planet-header'
 import { colors } from '../theme/colors'
-import { StyleSheet, FlatList, View, Pressable } from 'react-native'
+import { StyleSheet, FlatList, View, Pressable, TextInput } from 'react-native'
 import { PLANET_LIST } from '../data/planet-list'
 import { spacing } from '../theme/spacing'
 import { AntDesign } from '@expo/vector-icons';
@@ -31,6 +31,21 @@ const PlanetItem = ({item})=>{
 }
 
 export default function Home({navigation}) {
+
+    const [list, setList] = useState(PLANET_LIST)
+
+    const handleSearch = (text)=>{
+        
+        
+        const filteredList = PLANET_LIST.filter((item) => {
+            const formatedInput = text.toLowerCase()
+            const formatedItemName = item.name.toLowerCase()
+
+            return formatedItemName.indexOf(formatedInput) > -1
+
+        })
+        setList(filteredList)
+        }
   const renderItem= ({item})=> {
      return(
         <PlanetItem item= {item} />
@@ -39,9 +54,16 @@ export default function Home({navigation}) {
   return (
    <SafeAreaView style={styles.container}>
     <PlanetHeader />
+    <TextInput style={{color: 'whiter', padding: 10, marginLeft:10, marginRighthe:10, borderWidth:1, borderColor: 'gray', marginTop: 10}}
+    placeholderTextColor={colors.white}
+    placeholder='Type the planet name'
+    autoCorrect= {false}
+    onChangeText={(text)=>handleSearch(text)}
+    />
     <FlatList 
     contentContainerStyle={styles.list}
-    data={PLANET_LIST}
+    //data={PLANET_LIST}
+    data={list}
     //keyExtractor= {(item, index) => item.name}
     keyExtractor= {(item) => item.name}
     renderItem={renderItem}
